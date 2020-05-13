@@ -2,7 +2,7 @@
 var apiKey = "&ae1dd4475c7b60eeeab3ef88607506d0"
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" 
 var citySearch = JSON.parse(localStorage.getItem("citySearch")) || [];        
-
+var cities = [""]
 
 
 
@@ -24,9 +24,20 @@ $(".weather-view").prepend(wthrDiv)
 
 }
 
+function renderCity(){
+    $("#city-view").empty
+    for (var i = 0; i <cities.length; i++){
+        var x = $("<p>")
+        x.addClass("city")
+        x.attr("data-name", cities[i])
+        x.text(cities[i])
+        $("#city-view").append(x)
+    }
+}
+
 $("#find-city").on("click", function (event) {
     event.preventDefault();
+var cityInput = $("city-input").val()
+cities.push(cityInput)
 
-
-    
 })
