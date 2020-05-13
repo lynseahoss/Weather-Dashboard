@@ -24,10 +24,10 @@ function displayCurrentWeather() {
     var weatherImg = "https://openweathermap.org/img/wn/$response.weather[0].icon@2x.png"
     var wthrDiv = $("#present-city");
     var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-    wthrDiv.html("<h1>"+response.name+(date.getMonth()+1)+ (date.getFullYear()) + "</h1>")
-    wthrDiv.text("<p> Temperature: " + tempF.toFixed(2) + "</p>")
-    wthrDiv.text("<p> Wind Speed: " + response.wind.speed + "</p>")
-    wthrDiv.text("<p> Humidity: " + response.main.humidity + "% </p>")
+    wthrDiv.append($("<h4>").text(response.nameresponse.name+(date.getMonth()+1)+ (date.getFullYear())))        
+    wthrDiv.append($("<p>").text("Temperature: " + tempF.toFixed(2)))
+    wthrDiv.append($("<p>").text("Wind Speed: " + response.wind.speed))
+    wthrDiv.append($("<>").text("Humidity: " + response.main.humidity + "%"))
 
     
     //     `, uvIndex(response.coord))
@@ -50,32 +50,39 @@ $.ajax({
   });
 }
 
-function renderCity() {
-  //empties text box
-  $("#city-list").empty();
 
-  for (var i = 0; i < cityStorage.length; i++) {
-    $("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i]);
-  }
-  console.log(cityStorage);
-}
-$("#find-city").on("click", function (event) {
-  //prevents from resetting page
-  event.preventDefault();
-  var cityForm = $("#city-input").val().trim();
-  cityStorage.push(cityForm);
-  localStorage.setItem("cities", JSON.stringify(cityStorage));
-  $("#city-input").val("");
 
-  renderCity();
-  displayCurrentWeather()
-});
 
 $("#fuckThis").on("click", ".city-li", function () {
   console.log($(this).text());
 });
 renderCity();
 displayCurrentWeather()
+
+
+
+// function renderCity() {
+//   //empties text box
+//   $("#city-list").empty();
+
+//   for (var i = 0; i < cityStorage.length; i++) {
+//     $("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i]);
+//   }
+//   console.log(cityStorage);
+// }
+// $("#find-city").on("click", function (event) {
+//   //prevents from resetting page
+//   event.preventDefault();
+//   var cityForm = $("#city-input").val().trim();
+//   cityStorage.push(cityForm);
+//   localStorage.setItem("cities", JSON.stringify(cityStorage));
+//   $("#city-input").val("");
+
+//   renderCity();
+//   displayCurrentWeather()
+// });
+
+
 // $("#find-city").on("click", function (event) {
 //     event.preventDefault();
 // var cityInput = $("city-input").val()
