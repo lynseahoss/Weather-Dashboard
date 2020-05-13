@@ -10,8 +10,9 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 //call current city weather API
 function displayCurrentWeather() {
+  var cityData = $(this).attr("data-city")
   var queryURL =
-    "https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=ae1dd4475c7b60eeeab3ef88607506d0";
+    "https://api.openweathermap.org/data/2.5/weather?q=" + cityData + "&units=imperial&APPID=ae1dd4475c7b60eeeab3ef88607506d0";
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -21,16 +22,18 @@ function displayCurrentWeather() {
     
     var wthrDiv = $("#present-city");
     var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-    wthrDiv.html("<h1>"+response.name+ "</h1>")
+    wthrDiv.html("<h1>"+response.name+(date.getMonth()+1)+ (date.getFullYear()) + "</h1>")
     wthrDiv.html("<p> Temperature: " + tempF.toFixed(2) + "</p>")
     wthrDiv.html("<p> Wind Speed: " + response.wind.speed + "</p>")
     wthrDiv.html("<p> Humidity: " + response.main.humidity + "% </p>")
 
-    // wthrDiv.html(`
-    //     <h2>${response.name},(${date.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
-    //    
+    
     //     `, uvIndex(response.coord))
     //    searchHistory(response.name);
+
+    console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidity: " + response.main.humidity);
+        console.log("Temperature (F): " + tempF);
   });
 }
 function fiveDayForecast(){
