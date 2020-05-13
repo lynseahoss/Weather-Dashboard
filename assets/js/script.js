@@ -6,18 +6,7 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 
 //Functions
-function renderCity(){
-  $("#city-list").empty();
-for (var i= 0; i < movies.length; i++){
-  var x = $("<li>")
-  x.addClass("li-city")
-  x.attr("data-city", cities[i])
-  x.text(cities[i])
-  $("city-list").append(x)
 
-  //$("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i])
-}
-}
 //
 
 //call current city weather API
@@ -44,6 +33,31 @@ function displayCurrentWeather() {
     $("#present-city").prepend(wthrDiv)
   });
 }
+
+function renderCity(){
+  $("#city-list").empty();
+for (var i= 0; i < movies.length; i++){
+  var x = $("<li>")
+  x.addClass("li-city")
+  x.attr("data-city", cities[i])
+  x.text(cities[i])
+  $("city-list").append(x)
+
+  //$("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i])
+}
+}
+
+
+  $("#find-city").on("click", function (event) {
+    //   //prevents from resetting page
+      event.preventDefault();
+      var cityForm = $("#city-input").val().trim();
+      cityStorage.push(cityForm);
+      localStorage.setItem("cities", JSON.stringify(cityStorage));
+      $("#city-input").val("");
+}
+
+
 function fiveDayForecast(){
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&APPID=ae1dd4475c7b60eeeab3ef88607506d0"
 $.ajax({
