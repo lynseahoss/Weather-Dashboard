@@ -1,7 +1,6 @@
 var apiKey = "ae1dd4475c7b60eeeab3ef88607506d0";
 var cities = [""];
-var queryURL =
-  "https://api.openweathermap.org/data/2.5/weather?q=" + cities + apiKey;
+
 var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 
@@ -10,9 +9,8 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 //call current city weather API
 function displayCurrentWeather() {
-  var cityData = $(this).attr("data-city");
   var queryURL =
-    "https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=${apiKey}";
+    "https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=ae1dd4475c7b60eeeab3ef88607506d0";
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -23,12 +21,23 @@ function displayCurrentWeather() {
     var weatherImg = `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
     var wthrDiv = $("#present-city");
     wthrDiv.html(`
-        <h2>${response.name}, ${response.sys.country} (${currTime.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
+        <h2>${response.name},(${currTime.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
         <p>Temperature: ${response.main.temp}&#176;F</p>
         <p>Humidity: ${response.main.humidity}%</p>
         <p>Wind Speed: ${response.wind.speed} mph</p>
         `, uvIndex(response.coord))
        searchHistory(response.name);
+  });
+}
+function fiveDayForecast(){
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&APPID=ae1dd4475c7b60eeeab3ef88607506d0"
+$.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    
+    
   });
 }
 
