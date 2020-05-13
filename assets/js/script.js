@@ -69,13 +69,19 @@ $("#find-city").on("click", function(event) {
 
 function fiveDayForecast(inputCity, inputState) {
   var queryURL =
-  "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + inputCity + "," + inputState + ",US&APPID=" + apiKey
+  "https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${apiKey}";
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
     console.log(response)
-})
+    for (var i = 0; i<= 5; i++){
+    var fiveDiv = $("#wthr-forecast")
+    fiveDiv.append($("<li>").text("Temperature: " + tempF.toFixed(2)));
+    fiveDiv.append($("<li>").text("Wind Speed: " + response.wind.speed));
+    fiveDiv.append($("<li>").text("Humidity: " + response.main.humidity + "%"));
+    }
+  })
   }
 
 
@@ -87,30 +93,3 @@ console.log(fiveDayForecast("Reno","NV"))
 
 
 
-// function renderCity() {
-//   //empties text box
-//   $("#city-list").empty();
-
-//   for (var i = 0; i < cityStorage.length; i++) {
-//     $("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i]);
-//   }
-//   console.log(cityStorage);
-// }
-// $("#find-city").on("click", function (event) {
-//   //prevents from resetting page
-//   event.preventDefault();
-//   var cityForm = $("#city-input").val().trim();
-//   cityStorage.push(cityForm);
-//   localStorage.setItem("cities", JSON.stringify(cityStorage));
-//   $("#city-input").val("");
-
-//   renderCity();
-//   displayCurrentWeather()
-// });
-
-// $("#find-city").on("click", function (event) {
-//     event.preventDefault();
-// var cityInput = $("city-input").val()
-// cities.push(cityInput)
-
-// })
