@@ -27,11 +27,7 @@ $(".weather-view").prepend(wthrDiv)
 function renderCity(){
     $("#city-view").empty
     for (var i = 0; i <cities.length; i++){
-        var x = $("<p>")
-        x.addClass("city")
-        x.attr("data-name", cities[i])
-        x.text(cities[i])
-        $("#city-view").append(x)
+       $("#city-view").append($("<p class = 'city'>")).text(citySearch[i])
     }
 }
 
