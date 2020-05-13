@@ -20,13 +20,15 @@ function displayCurrentWeather() {
     var date = new Date(response.dt*1000);
     var weatherImg = `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
     var wthrDiv = $("#present-city");
-    wthrDiv.html(`
-        <h2>${response.name},(${currTime.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
-        <p>Temperature: ${response.main.temp}&#176;F</p>
-        <p>Humidity: ${response.main.humidity}%</p>
-        <p>Wind Speed: ${response.wind.speed} mph</p>
-        `, uvIndex(response.coord))
-       searchHistory(response.name);
+
+    
+    // wthrDiv.html(`
+    //     <h2>${response.name},(${currTime.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
+    //     <p>Temperature: ${response.main.temp}&#176;F</p>
+    //     <p>Humidity: ${response.main.humidity}%</p>
+    //     <p>Wind Speed: ${response.wind.speed} mph</p>
+    //     `, uvIndex(response.coord))
+    //    searchHistory(response.name);
   });
 }
 function fiveDayForecast(){
