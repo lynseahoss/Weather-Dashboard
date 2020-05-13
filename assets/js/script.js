@@ -6,6 +6,19 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 
 //Functions
+function renderCity(){
+  $("#city-list").empty();
+for (var i= 0; i < movies.length; i++){
+  var x = $("<li>")
+  x.addClass("li-city")
+  x.attr("data-city", cities[i])
+  x.text(cities[i])
+  $("city-list").append(x)
+
+  //$("#city-list").append($("<li class = 'city-li'>")).text(cityStorage[i])
+}
+}
+//
 
 //call current city weather API
 function displayCurrentWeather() {
@@ -42,12 +55,7 @@ $.ajax({
     
   });
 }
-function renderCity(){
-  $("#city-list").empty();
-for (var i= 0; i < movies.length; i++){
-  var x = 
-}
-}
+
 
 
 
