@@ -28,14 +28,7 @@ function displayCurrentWeather() {
     wthrDiv.append($("<p>").text("Temperature: " + tempF.toFixed(2)))
     wthrDiv.append($("<p>").text("Wind Speed: " + response.wind.speed))
     wthrDiv.append($("<>").text("Humidity: " + response.main.humidity + "%"))
-
-    
-    //     `, uvIndex(response.coord))
-    //    searchHistory(response.name);
-
-    console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + tempF);
+    $("#present-city").prepend(wthrDiv)
   });
 }
 function fiveDayForecast(){
@@ -49,7 +42,12 @@ $.ajax({
     
   });
 }
-
+function renderCity(){
+  $("#city-list").empty();
+for (var i= 0; i < movies.length; i++){
+  var x = 
+}
+}
 
 
 
