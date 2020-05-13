@@ -1,6 +1,7 @@
 var apiKey = "ae1dd4475c7b60eeeab3ef88607506d0";
 var cities = [""];
-
+var date = new Date(response.dt*1000);
+var weatherImg = `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
 var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 
@@ -17,16 +18,17 @@ function displayCurrentWeather() {
   }).then(function (response) {
     console.log(response);
     console.log(response.name);
-    var date = new Date(response.dt*1000);
-    var weatherImg = `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
-    var wthrDiv = $("#present-city");
-
     
+    var wthrDiv = $("#present-city");
+    var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+    wthrDiv.html("<h1>"+response.name+ "</h1>")
+    wthrDiv.html("<p> Temperature: " + tempF.toFixed(2) + "</p>")
+    wthrDiv.html("<p> Wind Speed: " + response.wind.speed + "</p>")
+    wthrDiv.html("<p> Humidity: " + response.main.humidity + "% </p>")
+
     // wthrDiv.html(`
-    //     <h2>${response.name},(${currTime.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
-    //     <p>Temperature: ${response.main.temp}&#176;F</p>
-    //     <p>Humidity: ${response.main.humidity}%</p>
-    //     <p>Wind Speed: ${response.wind.speed} mph</p>
+    //     <h2>${response.name},(${date.getMonth()+1}/${date.getDate()}/${currTime.getFullYear()})<img src=${weatherImg} height="70px"></h2>
+    //    
     //     `, uvIndex(response.coord))
     //    searchHistory(response.name);
   });
