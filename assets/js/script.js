@@ -67,9 +67,9 @@ $("#find-city").on("click", function(event) {
   renderCity()
 });
 
-function fiveDayForecast(inputCity, inputState) {
+function fiveDayForecast(cityData) {
   var queryURL =
-  "https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${apiKey}";
+  "https://api.openweathermap.org/data/2.5/forecast?q=" + cityData + "&units=imperial&APPID=" + apiKey
   $.ajax({
     url: queryURL,
     method: "GET"
