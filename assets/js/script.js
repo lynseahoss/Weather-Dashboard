@@ -30,14 +30,14 @@ function renderCity(){
     $("#city-list").empty()
 
     for (var i = 0; i <cities.length; i++){
-       $("#city-list").append($("<p class = 'city-par'>")).text(cityStorage[i])
+       $("#city-list").append($("<li class = 'city-li list-group-item'>")).text(cityStorage[i])
     }
     console.log(cityStorage)
 }
 $("#find-city").on("click", function(event){
     //prevents from resetting page
     event.preventDefault()
-    var cityForm = $("#city-input").val().trim
+    var cityForm = $("#city-input").val().trim()
     cityStorage.push(cityForm)
     localStorage.setItem("cityStorage", JSON.stringify(cityStorage))
     $("#city-input").val("")
@@ -46,7 +46,7 @@ $("#find-city").on("click", function(event){
 
 })
 
-$(document).on("click", ".city-par", function(){
+$(document).on("click", ".city-li", function(){
     console.log($(this).text())
 })
 renderCity()
