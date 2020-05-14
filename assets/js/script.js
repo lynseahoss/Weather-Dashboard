@@ -9,7 +9,7 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 //call current city weather API
 function displayCurrentWeather(cityData) {
-
+$("#present-city").empty()
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityData +
