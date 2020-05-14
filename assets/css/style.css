@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@500&display=swap');
+*{
+    font-family: 'Hind', sans-serif;
+}
 
-h1, h4{
+h1 {
     font-family: 'Lalezar', cursive;
 }
 
