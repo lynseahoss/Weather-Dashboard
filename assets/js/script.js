@@ -5,8 +5,6 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 
 //Functions
 
-//
-
 //call current city weather API
 function displayCurrentWeather(cityData) {
 $("#present-city").empty()
@@ -39,7 +37,7 @@ $("#present-city").empty()
     fiveDayForecast(cityData)
   });
 }
-
+//display cities under form 
 function renderCity() {
   $("#city-list").empty();
   console.log(cityStorage)
@@ -55,7 +53,7 @@ function renderCity() {
   }
   displayCurrentWeather(cityStorage[cityStorage.length-1]);
 }
-
+//Displays renderCity() when clicked 
 $("#find-city").on("click", function(event) {
   //   //prevents from resetting page
   event.preventDefault();
@@ -67,8 +65,7 @@ $("#find-city").on("click", function(event) {
   $("#city-input").val("");
   renderCity()
 });
-
-
+//Display five-day forecast
 function fiveDayForecast(cityData){
   var queryURL =
   "https://api.openweathermap.org/data/2.5/forecast?" +
@@ -78,6 +75,7 @@ function fiveDayForecast(cityData){
     method: "GET"
   }).then(function(response) {
     console.log(response)
+    //used for loop to choose a specific hour of day which will push out five items(days) rather than 40 items (every 3 hrs for next 5 days)
     for (var i = 0; i<= response.list.length; i++){
       if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
     var fiveDiv = $("#wthr-forecast")
@@ -89,11 +87,8 @@ function fiveDayForecast(cityData){
   }
   }
   })
-
 }
-
-
-
+//Displays displayWeather() when clicked 
 $("#city-list").on("click", ".li-city", function() {
   displayCurrentWeather($(this).attr("data-city"))
 });
