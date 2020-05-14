@@ -13,10 +13,8 @@ For this project:
 4. Click on past searches to display weather
 
 
-Issues I encountered and don't believe should be marked down:
-1. The five day forecast was displaying 40 items - never had examples on how to grab a certain time and use it to limit the amount of days. Wasn't exposed to moment until this project. 
-2. The five day forecast isn't displaying anymore. I don't know what I did to break it in my last commit but in previous commits you'll see that it was working.  
- 
+Issues I have encountered:
+1. The five day forecast was displaying 40 items now it's not displaying. I broke it with one of my pushes. Was trying to compare in past commits but was unable to find the issue. 
 
 
 
