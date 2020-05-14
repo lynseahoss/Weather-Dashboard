@@ -81,7 +81,7 @@ function fiveDayForecast(cityData){
     for (var i = 0; i<= response.list.length; i++){
       if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
     var fiveDiv = $("#wthr-forecast")
-    var weatherImg = $("<img>").attr("src","https://openweathermap.org/img/wn/"+"03d"+"@2x.png")
+    var weatherImg = $("<img>").attr("src","https://openweathermap.org/img/wn/"+ response.list[e].weather[0].icon +"@2x.png")
     var tempF = response.list[i].main.temp
     fiveDiv.append($("<li>").text("Temperature: " + tempF.toFixed(2)));
     fiveDiv.append($("<li>").text("Wind Speed: " + response.list[i].wind.speed));
