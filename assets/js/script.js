@@ -23,7 +23,7 @@ $("#present-city").empty()
     //date variable
     var date = moment().format("l");  
     //icon for weather info
-    var weatherImg = $("<img>").attr("src","https://openweathermap.org/img/wn/"+"03d"+"@2x.png");
+    var weatherImg = $("<img>").attr("src","https://openweathermap.org/img/wn/"+"response.list[e].weather[0].icon"+"@2x.png");
     var wthrDiv = $("<div>");
     var tempF = response.main.temp;
     console.log(weatherImg)
