@@ -79,6 +79,9 @@ function fiveDayForecast(cityData){
   }).then(function(response) {
     console.log(response)
     for (var i = 0; i<= response.list.length; i++){
+      if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+    
+      }
     var fiveDiv = $("#wthr-forecast")
     var weatherImg = $("<img>").attr("src","https://openweathermap.org/img/wn/"+"03d"+"@2x.png")
     var tempF = response.list[i].main.temp
