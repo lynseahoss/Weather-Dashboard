@@ -4,10 +4,13 @@
     font-family: 'Hind', sans-serif;
 }
 
-h1 {
+h1{
     font-family: 'Lalezar', cursive;
 }
 
 .bg-color{
+    background-color: rgb(39, 183, 250);
+}
+.bg-forecast{
     background-color: rgb(39, 183, 250);
 }
