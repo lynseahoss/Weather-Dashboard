@@ -14,3 +14,11 @@ h1{
 .bg-forecast{
     background-color: rgb(39, 183, 250);
 }
+.bgCity{
+    background-color: rgba(245, 243, 243, 0.5);
+    
+}
+.card-body{
+    background-color: rgb(229, 156, 252);
+    color: white;
+}
