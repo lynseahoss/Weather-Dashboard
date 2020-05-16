@@ -58,7 +58,7 @@ function uvIndex (uvCords){
     method: "GET"
   }).then(function(response) {
     console.log(response)
-   
+
     //appending UV index to wthrDiv in displayCurrentWeather function
     $("#wthrDiv").append($("<p>").text("UV Index: "+ response.value))  
 })
