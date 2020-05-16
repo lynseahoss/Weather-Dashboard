@@ -2,19 +2,40 @@
 
 
 
-Click for [Weather Dashboard](https://lynseahoss.github.io/Weather-Dashboard/)
-![Weather Dashboard](https://github.com/lynseahoss/Weather-Dashboard/blob/master/assets/images/Screen%20Shot%202020-05-14%20at%201.09.21%20AM.png)
+## [Weather Dashboard](https://lynseahoss.github.io/Weather-Dashboard/)
+![Weather Dashboard](assets/images/wthrDash.png)
 
+----
+## Project Overview:
+1. Create a weather dashboard using Open Weather Map Api (multiple)
+2. Create a function to retrieve data from [Current Weather API](https://openweathermap.org/current) to display City Name, Icon, Temperature & Humidity  
+3. Create a function to retrieve data from [UV Index API](https://openweathermap.org/api/uvi) to display UV Index above in step 2.
+4. Push city names below the form and use local storage to display city's weather & five day forecast when event listener initiated. 
+5. Create function to retrieve data from [5 day / 3 hour Forecast](https://openweathermap.org/forecast5) to display date, icon, temp, & humidty at a specific same hour for the next five days.
+6. Create click event listeners to run the functions & display on screen when initiated.
 
-For this project:
-1. Get Api from Open Weather
-2. Build a weather dashboard that displays a city's current weather & five day forecast
-3. Use local storage to set/get cities in the ul list
-4. Click on past searches to display weather
+----
 
+## Project Technology
 
-Issues I have encountered:
-1. The five day forecast was displaying 40 items now it's not displaying. I broke it with one of my pushes. Was trying to compare in past commits but was unable to find the issue. 
+Languages
+- HTML
+- CSS
+- Javascript
+
+Library
+-jQuery
+
+CSS Framework
+- [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+
+APIs
+- [Open Weather Map](https://openweathermap.org/api)
+
+----
+## Author
+[Lindsey Lawson](https://github.com/lynseahoss/)
+
 
 
 
