@@ -37,8 +37,8 @@ function displayCurrentWeather(cityData) {
     newH4.append(weatherImg);
 
     wthrDiv.append(newH4);
-    wthrDiv.append($("<p>").text("Temperature: " + tempF.toFixed(2)));
-    wthrDiv.append($("<p>").text("Wind Speed: " + response.wind.speed));
+    wthrDiv.append($("<p>").text("Temperature: " + tempF.toFixed(2) + " F"));
+    wthrDiv.append($("<p>").text("Wind Speed: " + response.wind.speed + " MPH"));
     wthrDiv.append($("<p>").text("Humidity: " + response.main.humidity + "%"));
     $("#present-city").prepend(wthrDiv);
     fiveDayForecast(cityData);
@@ -58,8 +58,25 @@ function uvIndex (uvCords){
     method: "GET"
   }).then(function(response) {
     console.log(response)
+    var uvText = response.value
+    var uvBadge = $("<span>").addClass("badge").text(uvText)
+    var uvCords = response.value 
     //appending UV index to wthrDiv in displayCurrentWeather function
-    $("#wthrDiv").append($("<p>").text("UV Index: "+ response.value))  
+    $("#wthrDiv").append("UV Index: ").append(uvBadge)
+    
+   // $("#wthrDiv").append(uvBadge)
+    if (uvCords < 3){
+      uvBadge.addClass("uv1")
+    }
+    else if (uvCords<5) {
+      uvBadge.addClass("uv2")
+    }
+    else if (uvCords < 8){
+      uvBadge.addClass("uv3")
+    }
+    else {
+      uvBadge.addClass("uv4")
+    }
 })
 }
 
@@ -117,10 +134,10 @@ function fiveDayForecast(cityData) {
         colSm.append("<h5 class ='mx-5 mt-4'>"+newDate+"</h5>")
         colSm.append(weatherImg);
         colSm.append(
-          $("<p>").text("Temperature: " + tempF.toFixed(2))
+          $("<p>").text("Temperature: " + tempF.toFixed(2)+ " F")
         );
         colSm.append(
-          $("<p>").text("Wind Speed: " + response.list[i].wind.speed)
+          $("<p>").text("Wind Speed: " + response.list[i].wind.speed + " MPH") 
         );
         colSm.append(
           $("<p>").text("Humidity: " + response.list[i].main.humidity + "%")
