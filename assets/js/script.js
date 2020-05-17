@@ -8,7 +8,7 @@ var cityStorage = JSON.parse(localStorage.getItem("cities")) || [];
 //Displays City's Current Temp
 function displayCurrentWeather(cityData) {
   $("#present-city").empty()
-  console.log(cityData);
+  //console.log(cityData);
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityData +
@@ -31,22 +31,18 @@ function displayCurrentWeather(cityData) {
     );
     var wthrDiv = $("<div id='wthrDiv'>");
     var tempF = response.main.temp;
-    console.log(weatherImg);
-
+    //console.log(weatherImg);
     var newH4 = $("<h4>").text(response.name + " (" + date + ") ");
     newH4.append(weatherImg);
-
     wthrDiv.append(newH4);
     wthrDiv.append($("<p>").text("Temperature: " + tempF.toFixed(2) + " F"));
     wthrDiv.append($("<p>").text("Wind Speed: " + response.wind.speed + " MPH"));
     wthrDiv.append($("<p>").text("Humidity: " + response.main.humidity + "%"));
     $("#present-city").prepend(wthrDiv);
     fiveDayForecast(cityData);
-    
 //get city cords for UV Index
 var uvCords = [response.coord.lat, response.coord.lon]
 uvIndex(uvCords)
-
   });
 }
 
@@ -63,7 +59,6 @@ function uvIndex (uvCords){
     var uvCords = response.value 
     //appending UV index to wthrDiv in displayCurrentWeather function
     $("#wthrDiv").append("UV Index: ").append(uvBadge)
-    
    // $("#wthrDiv").append(uvBadge)
     if (uvCords < 3){
       uvBadge.addClass("uv1")
@@ -80,11 +75,10 @@ function uvIndex (uvCords){
 })
 }
 
-
 //Displays City Name under Form/Input
 function renderCity() {
   $("#city-list").empty();
-  console.log(cityStorage);
+  //console.log(cityStorage);
   if (cityStorage.length === 0) return;
   for (var i = 0; i < cityStorage.length; i++) {
     var newLi = $("<li>");
@@ -108,7 +102,7 @@ function fiveDayForecast(cityData) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    console.log(response)
+    //console.log(response)
     $('#five-forecast').empty()
     var fiveH4 = $("<h4>").text("Forecast for the Next 5 days");
     $('#five-forecast').append(fiveH4);
@@ -117,11 +111,10 @@ function fiveDayForecast(cityData) {
     for (var i = 0; i <= response.list.length -1; i++) {
       // console.log(response.list[i].dt_txt)
       var time = response.list[i].dt_txt
-
-      console.log(moment.unix(response.list[i].dt).format("l"))
+      //console.log(moment.unix(response.list[i].dt).format("l"))
       //console.log(time)
       if (time.includes("15:00:00")) {
-        console.log('made it here')
+        //console.log('made it here')
         var colSm = $("<div>").addClass("col-sm-2 bg-forecast text-light mx-1");
         var weatherImg = $("<img>").attr(
           "src",
